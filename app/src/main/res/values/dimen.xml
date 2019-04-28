@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <!-- reminder_rectangle -->
+    <dimen name="corner_radius">8dp</dimen>
+    <dimen name="rectangle_shift">5dp</dimen>
+    <dimen name="rectangle_padding">5dp</dimen>
+    
+    <!-- activity_reminder -->
+    <dimen name="medium_padding">5dp</dimen>
+    <dimen name="large_padding">10dp</dimen>
+    <dimen name="fragment_item_padding">2dp</dimen>
+    <dimen name="container_height">200dp</dimen>
+    <dimen name="container_margin">60dp</dimen>
+    <dimen name="survey_container_margin">20dp</dimen>
+    <dimen name="icon_width">250dp</dimen>
+    <dimen name="clock_size">50dp</dimen>
+    <dimen name="blue_button_size">50dp</dimen>
+    <dimen name="info_layout_width">850dp</dimen>
+    <dimen name="reminder_info_margin_up">10dp</dimen>
+    <dimen name="font_size_title">50sp</dimen>
+    <dimen name="font_size_medium">35sp</dimen>
+
+</resources>

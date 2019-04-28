@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <string name="app_name">Recordatorios</string>
+
+    <string name="activity_alert_title">RECORDATORIO DE ACTIVIDAD</string>
+    <string name="personal_alert_title">RECORDATORIO PERSONAL</string>
+    <string name="doctor_alert_title">CITA MÉDICA</string>
+    <string name="measure_alert_title">RECORDATORIO DE MEDIDA</string>
+    <string name="stimulus_alert_title">RECORDATORIO DE STIMULUS</string>
+    <string name="medication_alert_title">AVISO DE MEDICACIÓN</string>
+    <string name="call_alert_title">LLAMADA ENTRANTE</string>
+
+    <string name="call_alert_subtitle">Llamando:\u0020</string>
+
+    <string name="incoming_call_accept">Aceptar</string>
+    <string name="incoming_call_reject">Rechazar</string>
+
+    <string name="feedback_survey_affirmative">Si</string>
+    <string name="feedback_survey_negative">No</string>
+
+    <string name="mood_survey_great">Genial</string>
+    <string name="mood_survey_happy">Bien</string>
+    <string name="mood_survey_meh">Regular</string>
+    <string name="mood_survey_sad">Triste</string>
+    <string name="mood_survey_bad">Mal</string>
+
+    <string name="close_alert_text">Pulse OK o atrás para confirmar</string>
+    <string name="measure_alert_text">Pulse Si para abrir la aplicación de toma de medidas o No para cancelar</string>
+    <string name="stimulus_alert_text">Pulse Si para abrir la aplicación de stimulus o No para cancelar</string>
+    <string name="call_alert_text">¿Quiéres aceptar o quiéres rechazar la llamada entrante?</string>
+
+    <string name="error_launching_app">La aplicación no se encuentra instalada</string>
+    <string name="hint_text">Pulse flechas de arriba y abajo para ver el contenido</string>
+
+</resources>

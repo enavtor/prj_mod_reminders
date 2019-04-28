@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/reminder_rectangle">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/large_padding">
+
+        <!-- Smart Health logo -->
+        <ImageView
+            android:layout_width="@dimen/icon_width"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:padding="@dimen/medium_padding"
+            android:src="@drawable/aal_logo" />
+
+        <LinearLayout
+            android:layout_width="@dimen/info_layout_width"
+            android:layout_height="match_parent"
+            android:background="@color/sh_prussian_blue_light"
+            android:orientation="vertical"
+            android:padding="@dimen/medium_padding">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/large_padding">
+
+                <!-- Survey title -->
+                <TextView
+                    android:id="@+id/no_feedback_survey_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/medium_padding"
+                    android:textColor="@color/sh_blue_dark"
+                    android:textSize="@dimen/font_size_title" />
+
+            </LinearLayout>
+
+            <!-- Survey content -->
+            <LinearLayout
+                android:id="@+id/no_feedback_action_container"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/no_feedback_action"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/large_padding"
+                    android:text="@string/close_alert_text"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/font_size_medium"
+                    android:textStyle="italic" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

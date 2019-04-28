@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:alwaysDrawnWithCache="false"
+    android:background="@android:color/transparent"
+    tools:context="com.shtvsolution.recordatorios.view.ReminderActivity">
+
+    <RelativeLayout
+        android:id="@+id/reminder_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginEnd="110dp"
+        android:layout_marginBottom="55dp"
+        android:background="@drawable/reminder_rectangle"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/large_padding">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <!-- AAL logo -->
+                <ImageView
+                    android:layout_width="@dimen/icon_width"
+                    android:layout_height="130dp"
+                    android:layout_marginEnd="@dimen/container_margin"
+                    android:padding="@dimen/medium_padding"
+                    android:src="@drawable/aal_logo" />
+                <!-- Reminder picture -->
+                <ImageView
+                    android:id="@+id/reminder_icon"
+                    android:layout_width="@dimen/icon_width"
+                    android:layout_height="130dp"
+                    android:layout_marginStart="@dimen/container_margin"
+                    android:padding="@dimen/large_padding"
+                    android:src="@drawable/medico" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/sh_prussian_blue_light"
+                android:orientation="vertical"
+                android:padding="@dimen/medium_padding">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/large_padding">
+
+                    <!-- Reminder time -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/sh_blue_dark"
+                        android:gravity="center_vertical"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingEnd="@dimen/large_padding"
+                        android:paddingStart="@dimen/large_padding">
+
+                        <ImageView
+                            android:layout_width="@dimen/clock_size"
+                            android:layout_height="@dimen/clock_size"
+                            android:src="@drawable/clock" />
+
+                        <TextView
+                            android:id="@+id/reminder_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingEnd="@dimen/large_padding"
+                            android:paddingStart="@dimen/large_padding"
+                            android:textColor="@color/white_transparent"
+                            android:textSize="46sp" />
+                    </LinearLayout>
+
+                    <!-- Reminder title -->
+                    <TextView
+                        android:id="@+id/reminder_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/medium_padding"
+                        android:textColor="@color/sh_blue_dark"
+                        android:textSize="46sp" />
+                </LinearLayout>
+
+                <!-- Reminder text -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/reminder_text_action"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="1.1"
+                        android:gravity="center"
+                        android:text="@string/hint_text"
+                        android:fontFamily="sans-serif-light"
+                        android:textColor="@color/black"
+                        android:textSize="28sp"/>
+
+                    <RelativeLayout
+                        android:layout_width="23dp"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginEnd="5dp"
+                        android:background="@drawable/content_indication_up"
+                        android:backgroundTint="@color/black"
+                        android:gravity="center"/>
+
+                    <RelativeLayout
+                        android:layout_width="23dp"
+                        android:layout_height="45dp"
+                        android:background="@drawable/content_indication_down"
+                        android:backgroundTint="@color/black"
+                        android:gravity="center"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/reminder_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/large_padding"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/info_text_background"
+                    android:minLines="1"
+                    android:maxLines="4"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="32sp" />
+
+                <!-- Reminder action -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom">
+
+                    <LinearLayout
+                        android:id="@+id/reminder_action_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/reminder_action"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/large_padding"
+                            android:text="@string/close_alert_text"
+                            android:fontFamily="sans-serif-light"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="45sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/reminder_action_feedback"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/large_padding"
+                            android:text="@string/close_alert_text"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="@dimen/font_size_medium"
+                            android:textStyle="italic"
+                            android:visibility="gone"/>
+                    </LinearLayout>
+
+                    <!-- Measures and stimulus reminder actions -->
+                    <LinearLayout
+                        android:id="@+id/applaunch_options_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/reminder_action_container"
+                        android:orientation="horizontal"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        android:visibility="gone">
+
+                        <RelativeLayout
+                            android:id="@+id/applaunch_affirmative"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/buttons_focus"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:nextFocusUp="@id/applaunch_affirmative"
+                            android:padding="@dimen/large_padding">
+                            <TextView
+                                android:layout_width="180dp"
+                                android:layout_height="90dp"
+                                android:padding="@dimen/fragment_item_padding"
+                                android:text="@string/feedback_survey_affirmative"
+                                android:gravity="center"
+                                android:textAlignment="center"
+                                android:textSize="55sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:background="@drawable/generic_survey_positive"/>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/applaunch_negative"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="120dp"
+                            android:layout_marginEnd="80dp"
+                            android:background="@drawable/buttons_focus"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:nextFocusUp="@id/applaunch_negative"
+                            android:padding="@dimen/large_padding">
+
+                            <TextView
+                                android:layout_width="180dp"
+                                android:layout_height="90dp"
+                                android:padding="@dimen/fragment_item_padding"
+                                android:text="@string/feedback_survey_negative"
+                                android:gravity="center"
+                                android:textAlignment="center"
+                                android:textSize="55sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/black"
+                                android:background="@drawable/generic_survey_negative"/>
+                        </RelativeLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!--Survey layouts (Only shown when a survey remainder is launched or a call received)-->
+    <RelativeLayout
+        android:id="@+id/mood_survey_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/survey_container_margin">
+        <include
+            layout="@layout/element_mood_survey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/feedback_survey_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/survey_container_margin">
+        <include
+            layout="@layout/element_feedback_survey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/no_feedback_survey_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/survey_container_margin">
+        <include
+            layout="@layout/element_no_feedback_survey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/incoming_call_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="@dimen/survey_container_margin">
+        <include
+            layout="@layout/element_incoming_call_reminder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <!-- Reminder focus -->
+    <RelativeLayout
+        android:id="@+id/reminder_container_focus"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/reminder_focus"
+        android:visibility="invisible" />
+
+</RelativeLayout>

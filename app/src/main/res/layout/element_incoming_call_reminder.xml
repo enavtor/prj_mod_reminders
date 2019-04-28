@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="1100dp"
+        android:layout_height="620dp"
+        android:background="@drawable/reminder_rectangle"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/large_padding">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <!-- Smart Health logo -->
+                <ImageView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="140dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/aal_logo" />
+                <!-- Reminder picture -->
+                <ImageView
+                    android:id="@+id/reminder_icon"
+                    android:layout_width="140dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginStart="@dimen/container_margin"
+                    android:adjustViewBounds="true"
+                    android:padding="19dp"
+                    android:src="@drawable/call_reminder_icon" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/sh_prussian_blue_medium"
+                android:orientation="vertical"
+                android:padding="@dimen/medium_padding">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/large_padding">
+
+                    <!-- Reminder time -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/sh_blue_dark"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingEnd="@dimen/large_padding"
+                        android:paddingStart="@dimen/large_padding">
+
+                        <ImageView
+                            android:layout_width="@dimen/clock_size"
+                            android:layout_height="@dimen/clock_size"
+                            android:padding="@dimen/medium_padding"
+                            android:src="@drawable/clock" />
+
+                        <TextView
+                            android:id="@+id/incoming_call_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/medium_padding"
+                            android:paddingEnd="@dimen/large_padding"
+                            android:paddingStart="@dimen/large_padding"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/font_size_title" />
+                    </LinearLayout>
+
+                    <!-- Reminder title -->
+                    <TextView
+                        android:id="@+id/incoming_call_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:padding="@dimen/medium_padding"
+                        android:textColor="@color/sh_blue_light"
+                        android:textSize="@dimen/font_size_title" />
+                </LinearLayout>
+
+                <!-- Reminder text -->
+                <TextView
+                    android:id="@+id/incoming_call_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:minLines="1"
+                    android:maxLines="1"
+                    android:padding="12dp"
+                    android:textColor="@color/white"
+                    android:textSize="50sp" />
+
+                <!-- Reminder action -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="5dp">
+
+                        <TextView
+                            android:id="@+id/icoming_call_action"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/large_padding"
+                            android:text="@string/call_alert_text"
+                            android:textColor="@color/sh_blue_light"
+                            android:textSize="@dimen/font_size_medium"
+                            android:textStyle="italic" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <!-- Incoming call buttons -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/accept_call_option"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/buttons_focus"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="@dimen/large_padding">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/generic_survey_positive"
+                            android:orientation="vertical"
+                            android:padding="5dp"
+                            android:gravity="center">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/accept_call"/>
+
+                            <TextView
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:padding="@dimen/fragment_item_padding"
+                                android:text="@string/incoming_call_accept"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:textSize="30sp"/>
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/reject_call_option"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="120dp"
+                        android:background="@drawable/buttons_focus"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="@dimen/large_padding">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/generic_survey_negative"
+                            android:orientation="vertical"
+                            android:padding="5dp"
+                            android:gravity="center">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/reject_call"/>
+
+                            <TextView
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:padding="@dimen/fragment_item_padding"
+                                android:text="@string/incoming_call_reject"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:textSize="30sp" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

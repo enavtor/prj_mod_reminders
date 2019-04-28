@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="layoutFocused">#690396a6</color>
+    <color name="transparent">#00000000</color>
+    <color name="led_ok">#0B2</color>
+    <color name="led_nok">#C00</color>
+    <color name="led_checking">#CC0</color>
+    <color name="ir_red">#ff0000</color>
+    <color name="ir_green">#00ff00</color>
+    <color name="ir_yellow">#ffff00</color>
+    <color name="ir_blue">#0000ff</color>
+    <color name="white_transparent">#88FFFFFF</color>
+    <color name="black_transparent">#7000</color>
+    <color name="background">#FFD</color>
+    <color name="focus">#880066ff</color>
+    <color name="focus_background">#880066ff</color>
+    <color name="progress_bar">#2EB8B8</color>
+
+    <color name="focus_translucent">#88FF77FF</color>
+    <color name="focus_light">#CC00CC</color>
+    <color name="focus_medium">#880088</color>
+
+    <color name="sh_red_medium">#DF142B</color>
+    <color name="sh_green_medium">#229800</color>
+    <color name="sh_yellow_medium">#FDCC00</color>
+    <color name="sh_blue_medium">#095ECC</color>
+    <color name="sh_cyan_medium">#38C6F3</color>
+    <color name="sh_cyan_medium_darker">#00B0E6</color>
+    <color name="sh_prussian_blue_medium">#44546A</color>
+    <color name="fuchsia_medium">#E26</color>
+
+    <color name="sh_red">#DF142B</color>
+    <color name="sh_green">#229800</color>
+    <color name="sh_yellow">#FDCC00</color>
+    <color name="sh_orange">#FF6600</color>
+    <color name="sh_blue">#095ECC</color>
+    <color name="sh_cyan">#38C6F3</color>
+    <color name="sh_prussian_blue">#44546A</color>
+
+    <color name="sh_red_light">#FACDD3</color>
+    <color name="sh_green_light">#C7FFB7</color>
+    <color name="sh_yellow_light">#FFF5CB</color>
+    <color name="sh_blue_light">#C6DDFC</color>
+    <color name="sh_cyan_light">#D5F3FC</color>
+    <color name="sh_prussian_blue_light">#D6DCE4</color>
+    <color name="fuchsia_light">#FCF</color>
+
+    <color name="sh_red_dark">#6E0915</color>
+    <color name="sh_green_dark">#114A00</color>
+    <color name="sh_yellow_dark">#7E6600</color>
+    <color name="sh_blue_dark">#042D63</color>
+    <color name="sh_cyan_dark">#086786</color>
+    <color name="sh_prussian_blue_dark">#333F50</color>
+    <color name="fuchsia_dark">#815</color>
+
+    <color name="white">#FFF</color>
+    <color name="grey_background">#CCC</color>
+    <color name="grey_lighter">#D9D9D9</color>
+    <color name="grey_light">#AAA</color>a6a6a6
+    <color name="grey_light_darker">#999</color>
+    <color name="grey_medium">#555</color>
+    <color name="grey_dark">#222</color>
+    <color name="black">#000000</color>
+
+</resources>

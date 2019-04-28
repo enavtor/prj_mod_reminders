@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/reminder_rectangle">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/large_padding">
+
+        <!-- Smart Health logo -->
+        <ImageView
+            android:layout_width="@dimen/icon_width"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:padding="@dimen/medium_padding"
+            android:src="@drawable/aal_logo" />
+
+        <LinearLayout
+            android:layout_width="@dimen/info_layout_width"
+            android:layout_height="match_parent"
+            android:background="@color/sh_prussian_blue_light"
+            android:orientation="vertical"
+            android:padding="@dimen/medium_padding">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/large_padding"
+                android:paddingBottom="5dp">
+
+                <!-- Survey title -->
+                <TextView
+                    android:id="@+id/mood_survey_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/medium_padding"
+                    android:textColor="@color/sh_blue_dark"
+                    android:textSize="@dimen/font_size_title" />
+
+            </LinearLayout>
+
+            <!-- Survey content -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="@dimen/large_padding">
+
+                <RelativeLayout
+                    android:id="@+id/first_option"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="30dp"
+                    android:background="@drawable/buttons_focus"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/first_option_image"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:padding="@dimen/fragment_item_padding"
+                        android:src="@drawable/mood_survey_great" />
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/first_option_image"
+                        android:text="@string/mood_survey_great"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:paddingTop="2dp"
+                        android:textSize="25sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ir_button"
+                        android:text="1"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/second_option"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="36dp"
+                    android:background="@drawable/buttons_focus"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/second_option_image"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:padding="@dimen/fragment_item_padding"
+                        android:src="@drawable/mood_survey_happy" />
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/second_option_image"
+                        android:paddingTop="2dp"
+                        android:text="@string/mood_survey_happy"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ir_button"
+                        android:text="2"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/third_option"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="30dp"
+                    android:background="@drawable/buttons_focus"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/third_option_image"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:padding="@dimen/fragment_item_padding"
+                        android:src="@drawable/mood_survey_meh" />
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/third_option_image"
+                        android:text="@string/mood_survey_meh"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:paddingTop="2dp"
+                        android:textSize="25sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ir_button"
+                        android:text="3"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/fourth_option"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="30dp"
+                    android:background="@drawable/buttons_focus"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/fourth_option_image"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:padding="@dimen/fragment_item_padding"
+                        android:src="@drawable/mood_survey_sad" />
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/fourth_option_image"
+                        android:text="@string/mood_survey_sad"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:paddingTop="2dp"
+                        android:textSize="25sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ir_button"
+                        android:text="4"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/fifth_option"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="30dp"
+                    android:background="@drawable/buttons_focus"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/fifth_option_image"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:padding="@dimen/fragment_item_padding"
+                        android:src="@drawable/mood_survey_bad" />
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/fifth_option_image"
+                        android:text="@string/mood_survey_bad"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:paddingTop="2dp"
+                        android:textSize="25sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ir_button"
+                        android:text="5"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
