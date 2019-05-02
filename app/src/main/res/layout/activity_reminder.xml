@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:alwaysDrawnWithCache="false"
     android:background="@android:color/transparent"
-    tools:context="com.shtvsolution.recordatorios.view.ReminderActivity">
+    tools:context="com.droidmare.reminders.views.ReminderActivity">
 
     <RelativeLayout
         android:id="@+id/reminder_container"
