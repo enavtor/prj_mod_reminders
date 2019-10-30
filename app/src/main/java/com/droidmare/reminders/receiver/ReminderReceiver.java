@@ -17,7 +17,7 @@ import java.util.Calendar;
 
 /**
  * Receives alarm broadcast
- * @author Carolina on 05/09/2017
+ * @author enavas on 05/09/2017
  */
 public class ReminderReceiver extends WakefulBroadcastReceiver {
 

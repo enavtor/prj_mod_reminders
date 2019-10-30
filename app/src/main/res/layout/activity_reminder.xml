@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:alwaysDrawnWithCache="false"
-    android:background="@android:color/transparent"
-    tools:context="com.droidmare.reminders.views.ReminderActivity">
+    android:background="@android:color/transparent">
 
     <RelativeLayout
         android:id="@+id/reminder_container"
@@ -43,8 +41,7 @@
                     android:layout_width="@dimen/icon_width"
                     android:layout_height="130dp"
                     android:layout_marginStart="@dimen/container_margin"
-                    android:padding="@dimen/large_padding"
-                    android:src="@drawable/medico" />
+                    android:padding="@dimen/large_padding"/>
             </LinearLayout>
 
             <LinearLayout
@@ -245,31 +242,6 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <!--Survey layouts (Only shown when a survey remainder is launched or a call received)-->
-    <RelativeLayout
-        android:id="@+id/mood_survey_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/survey_container_margin">
-        <include
-            layout="@layout/element_mood_survey"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/feedback_survey_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/survey_container_margin">
-        <include
-            layout="@layout/element_feedback_survey"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </RelativeLayout>
-
     <RelativeLayout
         android:id="@+id/no_feedback_survey_container"
         android:layout_width="match_parent"
@@ -278,18 +250,6 @@
         android:layout_margin="@dimen/survey_container_margin">
         <include
             layout="@layout/element_no_feedback_survey"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/incoming_call_container"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_margin="@dimen/survey_container_margin">
-        <include
-            layout="@layout/element_incoming_call_reminder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </RelativeLayout>

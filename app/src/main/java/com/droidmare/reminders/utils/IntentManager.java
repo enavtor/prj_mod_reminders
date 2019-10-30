@@ -8,6 +8,7 @@ import android.os.Bundle;
 import com.droidmare.reminders.model.Reminder;
 import com.droidmare.reminders.receiver.ReminderReceiver;
 import com.droidmare.reminders.views.ReminderActivity;
+import com.shtvsolution.common.utils.ServiceUtils;
 
 import java.lang.ref.WeakReference;
 
@@ -52,7 +53,7 @@ public class IntentManager {
             missedCallIntent.putExtra("callMissed", true);
             missedCallIntent.setComponent(new ComponentName("com.shtvsolution.videoconferencia", "com.shtvsolution.videoconferencia.services.MissedCallsService"));
 
-            reminderActivityReference.get().startService(missedCallIntent);
+            ServiceUtils.startService(context, missedCallIntent);
 
             reminderActivityReference.get().noneButtonPressed();
         }

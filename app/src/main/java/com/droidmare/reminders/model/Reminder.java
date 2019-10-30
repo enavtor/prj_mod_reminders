@@ -15,7 +15,7 @@ import org.json.JSONObject;
 
 /**
  * Model of reminders
- * @author Carolina on 06/09/2017
+ * @author enavas on 06/09/2017
  */
 
 public class Reminder implements Parcelable{

@@ -9,47 +9,38 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
-import com.droidmare.statistics.StatisticAPI;
-import com.droidmare.statistics.StatisticService;
 import com.droidmare.reminders.R;
+import com.droidmare.reminders.services.ReminderReceiverService;
+import com.shtvsolution.common.utils.ServiceUtils;
 
 /**
  * Starts the application.
  * This class is a test for saving alarms on Android clock
  *
- * @author Carolina on 05/09/2017
+ * @author enavas on 05/09/2017
  */
 
 public class SplashActivity extends Activity {
-
-    private StatisticService statistic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        statistic = new StatisticService(this);
-        statistic.sendStatistic(StatisticAPI.StatisticType.APP_TRACK, StatisticService.ON_CREATE, getClass().getCanonicalName());
-
         setContentView(R.layout.activity_splash);
         this.getCalendarPermissions();
 
+        String receiverService = ReminderReceiverService.class.getCanonicalName();
+
         Intent reminderIntent = this.getIntent();
 
-        if (reminderIntent != null) {
+        if (reminderIntent != null && receiverService != null) {
 
-            reminderIntent.setComponent(new ComponentName("com.shtvsolution.recordatorios", "com.shtvsolution.recordatorios.services.ReminderReceiverService"));
+            reminderIntent.setComponent(new ComponentName(getPackageName(), receiverService));
 
-            startService(reminderIntent);
+            ServiceUtils.startService(getApplicationContext(), reminderIntent);
         }
 
         finish();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        statistic.sendStatistic(StatisticAPI.StatisticType.APP_TRACK, StatisticService.ON_DESTROY, getClass().getCanonicalName());
     }
 
     /**

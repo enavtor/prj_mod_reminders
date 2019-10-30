@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 /**
  * Convert between Parcelable object and byte[]
- * @author Carolina on 14/09/2017.
+ * @author enavas on 14/09/2017.
  */
 
 public class ParcelableUtils{

@@ -12,7 +12,7 @@ import com.droidmare.reminders.utils.IntentManager;
 public class ReminderReceiverService extends IntentService {
 
     public ReminderReceiverService() {
-        super("UserDataReceiverService");
+        super("ReminderReceiverService");
     }
 
     @Override

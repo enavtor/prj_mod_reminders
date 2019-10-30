@@ -22,7 +22,7 @@ import org.json.JSONException;
 
 /**
  * Manages events on calendar for showing overlay reminders
- * @author Carolina on 05/09/2017
+ * @author enavas on 05/09/2017
  */
 
 public class CalendarManager {
