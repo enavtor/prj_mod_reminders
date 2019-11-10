@@ -11,7 +11,7 @@ import android.support.v4.content.ContextCompat;
 
 import com.droidmare.reminders.R;
 import com.droidmare.reminders.services.ReminderReceiverService;
-import com.shtvsolution.common.utils.ServiceUtils;
+import com.droidmare.common.utils.ServiceUtils;
 
 /**
  * Starts the application.
