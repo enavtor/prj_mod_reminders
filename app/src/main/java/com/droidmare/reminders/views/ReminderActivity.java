@@ -1,13 +1,19 @@
 package com.droidmare.reminders.views;
 
+import android.Manifest;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.CountDownTimer;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -22,17 +28,14 @@ import android.widget.TextView;
 import com.droidmare.common.models.ConstantValues;
 import com.droidmare.common.models.EventJsonObject;
 import com.droidmare.common.utils.DateUtils;
+import com.droidmare.common.utils.ToastUtils;
 import com.droidmare.reminders.R;
 import com.droidmare.reminders.receiver.ReminderReceiver;
-import com.droidmare.reminders.services.AppLauncherService;
-import com.droidmare.reminders.utils.ToastUtils;
-import com.droidmare.common.utils.ServiceUtils;
-
-import static com.droidmare.reminders.utils.ToastUtils.DEFAULT_TOAST_DURATION;
-import static com.droidmare.reminders.utils.ToastUtils.DEFAULT_TOAST_SIZE;
+import com.droidmare.reminders.services.ReminderReceiverService;
 
 //Shows overlay reminder
 //@author enavas on 05/09/2017:
+
 public class ReminderActivity extends AppCompatActivity {
 
     //Time for hide reminder in milliseconds:
@@ -69,44 +72,81 @@ public class ReminderActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
-        ReminderReceiver.setReminderActivityReference(this);
+        if (getIntent().getBooleanExtra("requestingPermission", false))
+            getCalendarPermissions();
 
-        setContentView(R.layout.activity_reminder);
-        repeatNotificationSound = false;
-        counterFinish = false;
-        startCountdown();
+        else {
+            setContentView(R.layout.activity_reminder);
+            repeatNotificationSound = false;
+            counterFinish = false;
+            startCountdown();
 
-        eventJson = EventJsonObject.createEventJson(getIntent().getStringExtra(ConstantValues.EVENT_JSON_FIELD));
-        HIDE_TIME = eventJson.getLong(ConstantValues.EVENT_TIMEOUT_FIELD, 30000);
-        boolean playNotificationSound = eventJson.getBoolean("playNotificationSound", true);
+            eventJson = EventJsonObject.createEventJson(getIntent().getStringExtra(ConstantValues.EVENT_JSON_FIELD));
+            HIDE_TIME = eventJson.getLong(ConstantValues.EVENT_TIMEOUT_FIELD, 30000);
+            boolean playNotificationSound = eventJson.getBoolean("playNotificationSound", true);
 
-        setReminderLayout();
+            setReminderLayout();
 
-        Animation up = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.reminder_up);
-        layout.startAnimation(up);
+            Animation up = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.reminder_up);
+            layout.startAnimation(up);
 
-        layout.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                //When the eventJson time has expired and none button was pressed, the attribute isCreated value will be "true":
-                if (isCreated) noneButtonPressed();
-            }
-        }, HIDE_TIME);
+            layout.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    //When the eventJson time has expired and none button was pressed, the attribute isCreated value will be "true":
+                    if (isCreated) noneButtonPressed();
+                }
+            }, HIDE_TIME);
 
-        showReminderInfo();
+            showReminderInfo();
 
-        if (playNotificationSound) setNotification();
+            if (playNotificationSound) setNotification();
+        }
+    }
+
+    //Method that explicitly asks for some permissions that must be granted by the user:
+    private void getCalendarPermissions() {
+
+        int readSdPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CALENDAR);
+        int writeSdPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_CALENDAR);
+
+        if (readSdPermission == PackageManager.PERMISSION_DENIED || writeSdPermission == PackageManager.PERMISSION_DENIED)
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CALENDAR, Manifest.permission.WRITE_CALENDAR}, 0);
+
+        else {
+            ReminderReceiverService.PERMISSION_GRANTED = true;
+            finish();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        ReminderReceiverService.PERMISSION_GRANTED = true;
+        finish();
     }
 
     //Depending on the type of the eventJson a different layout will be loaded:
     private void setReminderLayout() {
-        RelativeLayout reminderLayout = findViewById(R.id.reminder_container);
+        RelativeLayout reminderLayout;
+        RelativeLayout reminderContainer = findViewById(R.id.reminder_container);
+        RelativeLayout reminderSurvey = findViewById(R.id.no_feedback_survey_container);
 
         eventType = eventJson.getString(ConstantValues.EVENT_TYPE_FIELD, "");
-        //When the eventJson is of type STIMULUS, two action buttons must be displayed:
-        if (eventType.equals("STIMULUS")) {
-            findViewById(R.id.applaunch_options_container).setVisibility(View.VISIBLE);
-            setAppLauncherReminderBehaviour();
+
+        if (eventType.equals(ConstantValues.TEXTNOFEEDBACK_EVENT_TYPE)) {
+            reminderContainer.setVisibility(View.GONE);
+            reminderLayout = reminderSurvey;
+        }
+        else {
+            reminderSurvey.setVisibility(View.GONE);
+            reminderLayout = reminderContainer;
+
+            //When the eventJson is of type STIMULUS, two action buttons must be displayed:
+            if (eventType.equals(ConstantValues.STIMULUS_EVENT_TYPE)) {
+                findViewById(R.id.applaunch_options_container).setVisibility(View.VISIBLE);
+                setAppLauncherReminderBehaviour();
+            }
         }
 
         this.layout = reminderLayout;
@@ -160,23 +200,27 @@ public class ReminderActivity extends AppCompatActivity {
         final String extAppPackage = eventJson.getString(ConstantValues.PACKAGE_NAME, "");
         final String extAppClass = eventJson.getString(ConstantValues.ACTIVITY_NAME, "");
 
-        final Intent serviceIntent = new Intent(getApplicationContext(), AppLauncherService.class);
+        final Intent externalAppIntent = new Intent();
+        externalAppIntent.setComponent(new ComponentName(extAppPackage, extAppClass));
 
         affirmative.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-            if (extAppPackage != null && (getPackageManager().getLaunchIntentForPackage(extAppPackage) != null || extAppPackage.contains("stimulus"))) {
-                serviceIntent.putExtra(ConstantValues.PACKAGE_NAME, extAppPackage);
-                serviceIntent.putExtra(ConstantValues.ACTIVITY_NAME, extAppClass);
+                if (getPackageManager().getLaunchIntentForPackage(extAppPackage) != null)
+                    startActivity(externalAppIntent);
 
-                ServiceUtils.startService(getApplicationContext(), serviceIntent);
+                else {
+                    String message = getResources().getString(R.string.error_launching_app) + " (" + extAppPackage + ")";
+                    ToastUtils.makeCustomToast(getApplicationContext(), message);
+                }
             }
+        });
 
-            else {
-                String message = getResources().getString(R.string.error_launching_app) + " (" + extAppPackage + ")";
-                ToastUtils.makeCustomToast(getApplicationContext(), message, DEFAULT_TOAST_SIZE, DEFAULT_TOAST_DURATION);
-            }
+        negative.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                backButtonPressed();
             }
         });
 
@@ -184,6 +228,7 @@ public class ReminderActivity extends AppCompatActivity {
     }
 
     @Override
+    //Depending on the type of the reminder, the behaviour will be a little different:
     public boolean dispatchKeyEvent(KeyEvent event) {
 
         if (event.getKeyCode() == KeyEvent.KEYCODE_DPAD_UP || event.getKeyCode() == KeyEvent.KEYCODE_DPAD_DOWN)
@@ -230,7 +275,6 @@ public class ReminderActivity extends AppCompatActivity {
         if (event.getKeyCode() == KeyEvent.KEYCODE_F4 || event.getKeyCode() == KeyEvent.KEYCODE_PROG_YELLOW)
             return focusAndSimulateCenterPressed(negative);
 
-
         else if (event.getKeyCode() == KeyEvent.KEYCODE_F3 || event.getKeyCode() == KeyEvent.KEYCODE_PROG_GREEN)
             return focusAndSimulateCenterPressed(affirmative);
 
@@ -272,7 +316,7 @@ public class ReminderActivity extends AppCompatActivity {
 
         TextView time = findViewById(R.id.reminder_time);
         time.setTypeface(typefaceBold);
-        time.setText(DateUtils.getFormattedDate(DateUtils.transformFromMillis(eventJson.getReminderMillis(false))));
+        time.setText(DateUtils.getFormattedDate(DateUtils.transformFromMillis(eventJson.getReminderMillis())));
 
         TextView type = findViewById(R.id.reminder_type);
         type.setTypeface(typefaceLight);

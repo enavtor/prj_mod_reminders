@@ -11,20 +11,14 @@ import com.droidmare.reminders.R;
 import com.droidmare.reminders.utils.CalendarManager;
 import com.droidmare.reminders.views.ReminderActivity;
 
-import java.lang.ref.WeakReference;
 import java.util.Calendar;
 
 //Receives alarm broadcast
 //@author enavas on 05/09/2017
+
 public class ReminderReceiver extends BroadcastReceiver {
 
     private static final String TAG = ReminderReceiver.class.getCanonicalName();
-
-    //A reference to the reminder activity so its context can be retrieved before starting a new reminder:
-    private static WeakReference<ReminderActivity> reminderActivityReference;
-    public static void setReminderActivityReference(ReminderActivity activity) {
-        reminderActivityReference = new WeakReference<>(activity);
-    }
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -33,7 +27,11 @@ public class ReminderReceiver extends BroadcastReceiver {
 
         EventJsonObject eventJson = EventJsonObject.createEventJson(intent.getStringExtra(ConstantValues.EVENT_JSON_FIELD));
 
-        if (checkTimeParameters(context, eventJson)) launchReminder(context, eventJson);
+        //In order to show the correct time on the Reminder, the event to show must be a copy if the eventJson object,
+        //since that object's next repetition is going to be modified during the execution of checkTimeParameters:
+        EventJsonObject eventToShow = EventJsonObject.createEventJson(eventJson.toString());
+
+        if (checkTimeParameters(context, eventJson)) launchReminder(context, eventToShow);
     }
 
     ///Method that postpones the reminder or starts the ReminderActivity:

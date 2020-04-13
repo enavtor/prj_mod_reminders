@@ -17,14 +17,18 @@ import com.droidmare.common.utils.DateUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import static java.lang.Character.DECIMAL_DIGIT_NUMBER;
+
 //Manages events on calendar for showing overlay reminders
 //@author enavas on 05/09/2017
+
 public class CalendarManager {
 
     private static final String TAG = CalendarManager.class.getCanonicalName();
 
     //Creates an entry on calendar from Reminder object without repeating:
     public static void createAlarm(Context context, EventJsonObject eventJson, boolean reminderWillBeDisplayed){
+
         //A repeating and a non repeating alarm are established in the same way, the only thing that changes are the log messages displayed in each case.
         //This is due to the fact that a new alarm will be set, according to the specified interval, when the reminder is shown in ReminderActivity and no
         //repeating alarms will be created (owing to the fact repeating alarms are always inexact since API 19 (Android Kitkat 4.4.4)):
@@ -45,10 +49,11 @@ public class CalendarManager {
 
         JSONArray prevAlarmsArray = eventJson.getPreviousAlarmsArray();
 
+        //If the reminder has previous alarms, those must be set before setting the alarm that corresponds to the start date (once the prevAlarmsArray length is equals to zero):
         if (prevAlarmsArray.length() > 0) {
 
             try {
-                prevAlarm = prevAlarmsArray.getJSONObject(0).getString("Alarm");
+                prevAlarm = prevAlarmsArray.getJSONObject(0).getString(ConstantValues.PREV_ALARMS_ALARM_FIELD);
 
                 alarmDate = prevAlarm;
 
@@ -100,11 +105,6 @@ public class CalendarManager {
         deleteAlarmClock(context, eventJson);
     }
 
-    //Gets current time:
-    public static String getCurrentTime(){
-        return DateUtils.getTodayFormattedDate().split(" ")[1];
-    }
-
     //Adds a new alarm clock:
     private static void addAlarmClock(Context context, EventJsonObject eventJson, String prevAlarm){
         Calendar calendar=Calendar.getInstance();
@@ -123,7 +123,7 @@ public class CalendarManager {
             calendar.set(Calendar.YEAR, prevAlarmValues[DateUtils.YEAR]);
         }
 
-        else calendar.setTimeInMillis(eventJson.getReminderMillis(true));
+        else calendar.setTimeInMillis(eventJson.getReminderMillis());
 
         long alarmMillis = calendar.getTimeInMillis();
 
@@ -156,7 +156,11 @@ public class CalendarManager {
             intent.setAction(context.getResources().getString(R.string.launch_reminder));
             intent.putExtra(ConstantValues.EVENT_JSON_FIELD, eventJson.toString());
 
-            int eventId = Integer.valueOf(eventJson.getString(ConstantValues.EVENT_ID_FIELD, "").replace("localId:", ""));
+            //Before the PendingIntent is created, the event id is converted into an int value as follows:
+            String id = eventJson.getString(ConstantValues.EVENT_ID_FIELD, "").replace(ConstantValues.LOCAL_ID_HEAD, "");
+
+            int eventId = 0;
+            for (int i = 0; i < id.length(); i++) eventId += ((i + 1) * id.charAt(i));
 
             if (cancelingAlarm) {
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(context, eventId, intent, PendingIntent.FLAG_CANCEL_CURRENT);

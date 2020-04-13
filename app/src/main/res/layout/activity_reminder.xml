@@ -10,10 +10,10 @@
         android:id="@+id/reminder_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
-        android:layout_marginStart="110dp"
-        android:layout_marginEnd="110dp"
-        android:layout_marginBottom="55dp"
+        android:layout_marginTop="@dimen/dpi_55dp"
+        android:layout_marginStart="@dimen/dpi_110dp"
+        android:layout_marginEnd="@dimen/dpi_110dp"
+        android:layout_marginBottom="@dimen/dpi_55dp"
         android:background="@drawable/reminder_rectangle"
         android:gravity="center">
 
@@ -22,26 +22,26 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="@dimen/large_padding">
+            android:padding="@dimen/dpi_10dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <!-- AAL logo -->
+                <!-- logo -->
                 <ImageView
-                    android:layout_width="@dimen/icon_width"
-                    android:layout_height="130dp"
-                    android:layout_marginEnd="@dimen/container_margin"
-                    android:padding="@dimen/medium_padding"
-                    android:src="@drawable/aal_logo" />
+                    android:layout_width="@dimen/dpi_250dp"
+                    android:layout_height="@dimen/dpi_120dp"
+                    android:layout_marginEnd="@dimen/dpi_60dp"
+                    android:padding="@dimen/dpi_5dp"
+                    android:src="@drawable/header_logo" />
                 <!-- Reminder picture -->
                 <ImageView
                     android:id="@+id/reminder_icon"
-                    android:layout_width="@dimen/icon_width"
-                    android:layout_height="130dp"
-                    android:layout_marginStart="@dimen/container_margin"
-                    android:padding="@dimen/large_padding"/>
+                    android:layout_width="@dimen/dpi_250dp"
+                    android:layout_height="@dimen/dpi_130dp"
+                    android:layout_marginStart="@dimen/dpi_60dp"
+                    android:padding="@dimen/dpi_10dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -49,13 +49,13 @@
                 android:layout_height="match_parent"
                 android:background="@color/sh_prussian_blue_light"
                 android:orientation="vertical"
-                android:padding="@dimen/medium_padding">
+                android:padding="@dimen/dpi_5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="@dimen/large_padding">
+                    android:padding="@dimen/dpi_10dp">
 
                     <!-- Reminder time -->
                     <LinearLayout
@@ -65,22 +65,22 @@
                         android:gravity="center_vertical"
                         android:layout_gravity="center"
                         android:orientation="horizontal"
-                        android:paddingEnd="@dimen/large_padding"
-                        android:paddingStart="@dimen/large_padding">
+                        android:paddingEnd="@dimen/dpi_10dp"
+                        android:paddingStart="@dimen/dpi_10dp">
 
                         <ImageView
-                            android:layout_width="@dimen/clock_size"
-                            android:layout_height="@dimen/clock_size"
+                            android:layout_width="@dimen/dpi_50dp"
+                            android:layout_height="@dimen/dpi_50dp"
                             android:src="@drawable/clock" />
 
                         <TextView
                             android:id="@+id/reminder_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingEnd="@dimen/large_padding"
-                            android:paddingStart="@dimen/large_padding"
+                            android:paddingEnd="@dimen/dpi_10dp"
+                            android:paddingStart="@dimen/dpi_10dp"
                             android:textColor="@color/white_transparent"
-                            android:textSize="46sp" />
+                            android:textSize="@dimen/dpi_46sp" />
                     </LinearLayout>
 
                     <!-- Reminder title -->
@@ -88,16 +88,16 @@
                         android:id="@+id/reminder_type"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/medium_padding"
+                        android:padding="@dimen/dpi_5dp"
                         android:textColor="@color/sh_blue_dark"
-                        android:textSize="46sp" />
+                        android:textSize="@dimen/dpi_46sp" />
                 </LinearLayout>
 
                 <!-- Reminder text -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="15dp"
+                    android:layout_marginBottom="@dimen/dpi_15dp"
                     android:orientation="horizontal"
                     android:gravity="center">
 
@@ -110,20 +110,20 @@
                         android:text="@string/hint_text"
                         android:fontFamily="sans-serif-light"
                         android:textColor="@color/black"
-                        android:textSize="28sp"/>
+                        android:textSize="@dimen/dpi_28sp"/>
 
                     <RelativeLayout
-                        android:layout_width="23dp"
-                        android:layout_height="45dp"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginEnd="5dp"
+                        android:layout_width="@dimen/dpi_23dp"
+                        android:layout_height="@dimen/dpi_45dp"
+                        android:layout_marginStart="@dimen/dpi_40dp"
+                        android:layout_marginEnd="@dimen/dpi_5dp"
                         android:background="@drawable/content_indication_up"
                         android:backgroundTint="@color/black"
                         android:gravity="center"/>
 
                     <RelativeLayout
-                        android:layout_width="23dp"
-                        android:layout_height="45dp"
+                        android:layout_width="@dimen/dpi_23dp"
+                        android:layout_height="@dimen/dpi_45dp"
                         android:background="@drawable/content_indication_down"
                         android:backgroundTint="@color/black"
                         android:gravity="center"/>
@@ -133,16 +133,16 @@
                     android:id="@+id/reminder_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/large_padding"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginEnd="50dp"
+                    android:padding="@dimen/dpi_10dp"
+                    android:layout_marginStart="@dimen/dpi_50dp"
+                    android:layout_marginEnd="@dimen/dpi_50dp"
                     android:layout_gravity="center_vertical"
                     android:gravity="center_vertical"
                     android:background="@drawable/info_text_background"
                     android:minLines="1"
                     android:maxLines="4"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="32sp" />
+                    android:textSize="@dimen/dpi_32sp" />
 
                 <!-- Reminder action -->
                 <RelativeLayout
@@ -160,33 +160,33 @@
                             android:id="@+id/reminder_action"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/large_padding"
+                            android:padding="@dimen/dpi_10dp"
                             android:text="@string/close_alert_text"
                             android:fontFamily="sans-serif-light"
                             android:textColor="@color/colorPrimaryDark"
-                            android:textSize="45sp"
+                            android:textSize="@dimen/dpi_45sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/reminder_action_feedback"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/large_padding"
+                            android:padding="@dimen/dpi_10dp"
                             android:text="@string/close_alert_text"
                             android:textColor="@color/colorPrimaryDark"
-                            android:textSize="@dimen/font_size_medium"
+                            android:textSize="@dimen/dpi_35sp"
                             android:textStyle="italic"
                             android:visibility="gone"/>
                     </LinearLayout>
 
-                    <!-- Measures and stimulus reminder actions -->
+                    <!-- Stimulus reminder actions -->
                     <LinearLayout
                         android:id="@+id/applaunch_options_container"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/reminder_action_container"
                         android:orientation="horizontal"
-                        android:padding="10dp"
+                        android:padding="@dimen/dpi_10dp"
                         android:gravity="center"
                         android:visibility="gone">
 
@@ -198,15 +198,15 @@
                             android:clickable="true"
                             android:focusable="true"
                             android:nextFocusUp="@id/applaunch_affirmative"
-                            android:padding="@dimen/large_padding">
+                            android:padding="@dimen/dpi_10dp">
                             <TextView
-                                android:layout_width="180dp"
-                                android:layout_height="90dp"
-                                android:padding="@dimen/fragment_item_padding"
+                                android:layout_width="@dimen/dpi_180dp"
+                                android:layout_height="@dimen/dpi_90dp"
+                                android:padding="@dimen/dpi_2dp"
                                 android:text="@string/feedback_survey_affirmative"
                                 android:gravity="center"
                                 android:textAlignment="center"
-                                android:textSize="55sp"
+                                android:textSize="@dimen/dpi_55sp"
                                 android:textStyle="bold"
                                 android:textColor="@color/black"
                                 android:background="@drawable/generic_survey_positive"/>
@@ -216,22 +216,22 @@
                             android:id="@+id/applaunch_negative"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="120dp"
-                            android:layout_marginEnd="80dp"
+                            android:layout_marginStart="@dimen/dpi_120dp"
+                            android:layout_marginEnd="@dimen/dpi_80dp"
                             android:background="@drawable/buttons_focus"
                             android:clickable="true"
                             android:focusable="true"
                             android:nextFocusUp="@id/applaunch_negative"
-                            android:padding="@dimen/large_padding">
+                            android:padding="@dimen/dpi_10dp">
 
                             <TextView
-                                android:layout_width="180dp"
-                                android:layout_height="90dp"
-                                android:padding="@dimen/fragment_item_padding"
+                                android:layout_width="@dimen/dpi_180dp"
+                                android:layout_height="@dimen/dpi_90dp"
+                                android:padding="@dimen/dpi_2dp"
                                 android:text="@string/feedback_survey_negative"
                                 android:gravity="center"
                                 android:textAlignment="center"
-                                android:textSize="55sp"
+                                android:textSize="@dimen/dpi_55sp"
                                 android:textStyle="bold"
                                 android:textColor="@color/black"
                                 android:background="@drawable/generic_survey_negative"/>
@@ -247,7 +247,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/survey_container_margin">
+        android:layout_margin="@dimen/dpi_20dp">
         <include
             layout="@layout/element_no_feedback_survey"
             android:layout_width="wrap_content"
@@ -261,8 +261,8 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginStart="@dimen/dpi_neg_5dp"
+        android:layout_marginTop="@dimen/dpi_neg_2dp"
         android:background="@drawable/reminder_focus"
         android:visibility="invisible" />
 
